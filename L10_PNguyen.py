@@ -3,26 +3,34 @@
 #Completed (or last revision): 11/27/22
 
 #Task 1
-string = "hi"
-newString = string.translate(str.maketrans(''))
-print(string[-1])
-# def check_palindrome(my_str):
-# 	if len(my_str) < 1:
-# 		return True
-# 	else:
-# 		if my_str[0] == my_str[-1]:
-# 			return check_palindrome(my_str[1:-1])
-# 		else:
-# 			return False
-# my_string = str(input("Enter the string :"))
-# print("The string is ")
-# print(my_string)
-# if(check_palindrome(my_string) == True):
-# 	print("The string is a palindrome")
-# else:
-# 	print("The string isn't a palindrome")
+def punctuationRemover(string):
+     punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+     for element in string:
+          if element in punc:
+               string = string.replace(ele, "")
+     string = string.replace(" ", "")
+     return string
 
+def check_palindrome(my_str):
+     if len(my_str) < 1:
+          return True
+     else:
+          if my_str[0] == my_str[-1]:
+               print(my_str[1:-1])
+               return check_palindrome(my_str[1:-1])
+          else:
+               return False
+   
 
+def main():
+     userInput = input("What would you like to check if it is a palindrome? ")
+     newString = (punctuationRemover(userInput))
+     if(check_palindrome(newString) == True):
+          print("The string is a palindrome")
+     else:
+          print("The string isn't a palindrome")
+
+main()
 
 
 # #Task 2
