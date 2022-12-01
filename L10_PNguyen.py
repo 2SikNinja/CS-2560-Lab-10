@@ -4,33 +4,41 @@
 
 #Task 1
 def punctuationRemover(string):
-     punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
      for element in string:
-          if element in punc:
-               string = string.replace(ele, "")
+          if element in punctuations:
+               string = string.replace(element, "")
      string = string.replace(" ", "")
      return string
 
-def check_palindrome(my_str):
-     if len(my_str) < 1:
+def checkPalindrome(string):
+     if len(string) == 0:
           return True
+     if string[0] == string[-1]:
+          return checkPalindrome(string.replace(string[0],""))
      else:
-          if my_str[0] == my_str[-1]:
-               print(my_str[1:-1])
-               return check_palindrome(my_str[1:-1])
-          else:
-               return False
+          return False
    
 
 def main():
      userInput = input("What would you like to check if it is a palindrome? ")
      newString = (punctuationRemover(userInput))
-     if(check_palindrome(newString) == True):
+     if(checkPalindrome(newString) == True):
           print("The string is a palindrome")
      else:
           print("The string isn't a palindrome")
 
 main()
+
+#Task 1 Outputs
+# What would you like to check if it is a palindrome? race car
+# The string is a palindrome
+
+# What would you like to check if it is a palindrome? no lemon, no melon    
+# The string is a palindrome
+
+# What would you like to check if it is a palindrome? never odd or even
+# The string is a palindrome
 
 
 # #Task 2
